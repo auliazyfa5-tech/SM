@@ -823,3 +823,17 @@ RESPONSIVE
         transform:translateY(0);
     }
 }
+
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.logo-img{
+    width:180px;
+    max-width:100%;
+    height:auto;
+    object-fit:contain;
+}
