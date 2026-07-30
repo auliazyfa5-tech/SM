@@ -1,0 +1,825 @@
+/* ===================================
+   SATU MART POS
+   STYLE.CSS PART 1
+=================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    color:#333;
+}
+
+.wrapper{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ===========================
+SIDEBAR
+=========================== */
+
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#16a34a,#15803d);
+    color:#fff;
+    padding:25px 20px;
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:35px;
+}
+
+.logo-icon{
+    width:60px;
+    height:60px;
+    border-radius:15px;
+    background:#fff;
+    color:#16a34a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+}
+
+.logo h2{
+    font-size:22px;
+}
+
+.logo p{
+    font-size:13px;
+    opacity:.8;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.menu{
+    border:none;
+    background:transparent;
+    color:#fff;
+    text-align:left;
+    padding:14px 16px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.25s;
+}
+
+.menu i{
+    width:25px;
+}
+
+.menu:hover{
+    background:rgba(255,255,255,.15);
+}
+
+.menu.active{
+    background:#fff;
+    color:#16a34a;
+    font-weight:600;
+}
+
+/* ===========================
+CONTENT
+=========================== */
+
+.content{
+    margin-left:250px;
+    width:calc(100% - 250px);
+    padding:30px;
+}
+
+.topbar{
+    background:#fff;
+    border-radius:18px;
+    padding:20px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    margin-bottom:25px;
+}
+
+.topbar h1{
+    font-size:28px;
+}
+
+.topbar p{
+    color:#777;
+    font-size:14px;
+}
+
+/* ===========================
+BUTTON
+=========================== */
+
+.btn-green{
+    border:none;
+    background:#16a34a;
+    color:#fff;
+    padding:12px 22px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.25s;
+}
+
+.btn-green:hover{
+    background:#15803d;
+    transform:translateY(-2px);
+}
+
+.full{
+    width:100%;
+}
+
+/* ===========================
+PAGE
+=========================== */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* ===========================
+CARD DASHBOARD
+=========================== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.card p{
+    color:#777;
+    margin-bottom:10px;
+}
+
+.card h2{
+    color:#16a34a;
+}
+
+.card i{
+    font-size:40px;
+    color:#16a34a;
+}
+
+/* ===========================
+TOOLBAR
+=========================== */
+
+.toolbar{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.toolbar input{
+    flex:1;
+    height:48px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:0 15px;
+    outline:none;
+    font-size:15px;
+}
+
+.toolbar input:focus{
+    border-color:#16a34a;
+}
+
+/* ===========================
+GRID BARANG
+=========================== */
+
+.barang-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:22px;
+}
+
+/* ===================================
+   SATU MART POS
+   STYLE.CSS PART 2
+=================================== */
+
+/* ===========================
+CARD BARANG
+=========================== */
+
+.barang-card{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.barang-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.barang-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.barang-body{
+    padding:18px;
+}
+
+.barang-body h3{
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.kategori{
+    color:#888;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.harga{
+    color:#16a34a;
+    font-size:22px;
+    font-weight:700;
+}
+
+.stok{
+    margin-top:10px;
+    color:#555;
+    font-size:14px;
+}
+
+.action{
+    display:flex;
+    gap:8px;
+    margin-top:18px;
+}
+
+.action button{
+    flex:1;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+    color:#fff;
+    transition:.2s;
+    font-size:14px;
+}
+
+.btn-kasir{
+    background:#16a34a;
+}
+
+.btn-edit{
+    background:#2563eb;
+}
+
+.btn-hapus{
+    background:#dc2626;
+}
+
+.action button:hover{
+    opacity:.9;
+    transform:translateY(-2px);
+}
+
+/* ===========================
+KASIR
+=========================== */
+
+.kasir-container{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:25px;
+}
+
+.produk-area,
+.cart-area{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.cart-area h2{
+    margin-bottom:20px;
+}
+
+.empty{
+    text-align:center;
+    color:#888;
+    padding:40px 0;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+    padding-bottom:15px;
+    border-bottom:1px solid #eee;
+}
+
+.cart-info{
+    display:flex;
+    gap:12px;
+    align-items:center;
+}
+
+.cart-info img{
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    object-fit:cover;
+}
+
+.cart-name{
+    font-weight:600;
+}
+
+.cart-price{
+    color:#16a34a;
+    font-size:14px;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.qty button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    background:#16a34a;
+    color:#fff;
+}
+
+.total-box{
+    margin-top:25px;
+    border-top:2px dashed #ddd;
+    padding-top:20px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.total-box input{
+    width:100%;
+    height:45px;
+    padding:0 15px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    margin-bottom:15px;
+}
+
+/* ===========================
+TABLE
+=========================== */
+
+.table{
+    width:100%;
+    background:#fff;
+    border-collapse:collapse;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.table th{
+    background:#16a34a;
+    color:#fff;
+    padding:15px;
+    text-align:left;
+}
+
+.table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.table tr:hover{
+    background:#f9fafb;
+}
+
+/* ===========================
+MODAL
+=========================== */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-content{
+    width:450px;
+    max-width:95%;
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.modal-header{
+    background:#16a34a;
+    color:#fff;
+    padding:18px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#closeModal{
+    cursor:pointer;
+    font-size:28px;
+}
+
+.modal-body{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.modal-body label{
+    font-size:14px;
+    font-weight:600;
+}
+
+.modal-body input{
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:0 15px;
+}
+
+#previewFoto{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+    background:#f3f4f6;
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+.sidebar{
+    width:80px;
+}
+
+.logo h2,
+.logo p,
+.menu{
+    font-size:0;
+}
+
+.menu i{
+    font-size:18px;
+}
+
+.content{
+    margin-left:80px;
+    width:calc(100% - 80px);
+}
+
+.kasir-container{
+    grid-template-columns:1fr;
+}
+
+.cards{
+    grid-template-columns:1fr;
+}
+
+.barang-grid{
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+}
+
+}
+/* ==========================================
+   MOBILE RESPONSIVE V2
+========================================== */
+
+@media screen and (max-width:768px){
+
+.sidebar{
+
+    width:70px;
+    padding:15px 8px;
+
+}
+
+.logo{
+
+    justify-content:center;
+
+}
+
+.logo h2,
+.logo p{
+
+    display:none;
+
+}
+
+.logo-icon{
+
+    width:45px;
+    height:45px;
+    font-size:20px;
+
+}
+
+.menu{
+
+    padding:15px 0;
+    text-align:center;
+    font-size:0;
+
+}
+
+.menu i{
+
+    font-size:20px;
+    margin:0;
+
+}
+
+.content{
+
+    margin-left:70px;
+    width:calc(100% - 70px);
+    padding:15px;
+
+}
+
+.topbar{
+
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+
+}
+
+.topbar h1{
+
+    font-size:22px;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+.toolbar{
+
+    flex-direction:column;
+
+}
+
+.toolbar input{
+
+    width:100%;
+
+}
+
+.btn-green{
+
+    width:100%;
+
+}
+
+.barang-grid{
+
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+
+}
+
+.barang-card img{
+
+    height:120px;
+
+}
+
+.barang-body{
+
+    padding:12px;
+
+}
+
+.barang-body h3{
+
+    font-size:15px;
+
+}
+
+.harga{
+
+    font-size:18px;
+
+}
+
+.action{
+
+    flex-direction:column;
+
+}
+
+.action button{
+
+    width:100%;
+
+}
+
+.kasir-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.cart-area{
+
+    margin-top:15px;
+
+}
+
+.table{
+
+    display:block;
+    overflow-x:auto;
+
+}
+
+.modal-content{
+
+    width:95%;
+    margin:20px;
+
+}
+
+#previewFoto{
+
+    height:140px;
+
+}
+
+}
+
+/* HP KECIL */
+
+@media screen and (max-width:480px){
+
+.barang-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.topbar h1{
+
+    font-size:18px;
+
+}
+
+.card{
+
+    padding:18px;
+
+}
+
+.card h2{
+
+    font-size:20px;
+
+}
+
+}
+
+/* =====================================
+   MODAL HP (Tambah Barang)
+===================================== */
+
+@media screen and (max-width:768px){
+
+.modal{
+    padding:0;
+    align-items:flex-end;
+}
+
+.modal-content{
+    width:100%;
+    height:100vh;
+    max-width:none;
+    max-height:none;
+    border-radius:25px 25px 0 0;
+    overflow-y:auto;
+    animation:slideUp .3s ease;
+}
+
+.modal-header{
+    position:sticky;
+    top:0;
+    z-index:10;
+    padding:18px;
+}
+
+.modal-body{
+    padding:20px;
+    gap:15px;
+}
+
+.modal-body input{
+    height:50px;
+    font-size:16px;
+}
+
+.modal-body label{
+    font-size:15px;
+}
+
+#previewFoto{
+    height:220px;
+    border-radius:15px;
+}
+
+#btnSimpanBarang{
+    height:55px;
+    font-size:17px;
+    position:sticky;
+    bottom:15px;
+}
+
+}
+
+@keyframes slideUp{
+    from{
+        transform:translateY(100%);
+    }
+    to{
+        transform:translateY(0);
+    }
+}

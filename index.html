@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SATU MART POS</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- ========================= -->
+<!-- SIDEBAR -->
+<!-- ========================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">
+
+<i class="fa-solid fa-store"></i>
+
+</div>
+
+<div>
+
+<h2>SATU MART</h2>
+
+<p>Point Of Sale</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<button class="menu active" data-page="dashboard">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Dashboard
+
+</button>
+
+<button class="menu" data-page="barang">
+
+<i class="fa-solid fa-box"></i>
+
+Barang
+
+</button>
+
+<button class="menu" data-page="kasir">
+
+<i class="fa-solid fa-cash-register"></i>
+
+Kasir
+
+</button>
+
+<button class="menu" data-page="pengeluaran">
+
+<i class="fa-solid fa-wallet"></i>
+
+Pengeluaran
+
+</button>
+
+<button class="menu" data-page="laporan">
+
+<i class="fa-solid fa-file-lines"></i>
+
+Laporan
+
+</button>
+
+</nav>
+
+</aside>
+
+<!-- ========================= -->
+<!-- CONTENT -->
+<!-- ========================= -->
+
+<main class="content">
+
+<header class="topbar">
+
+<div>
+
+<h1>SATU MART POS</h1>
+
+<p>Sistem Kasir Modern</p>
+
+</div>
+
+<div>
+
+<button id="btnTambahBarang" class="btn-green">
+
+<i class="fa-solid fa-plus"></i>
+
+Tambah Barang
+
+</button>
+
+</div>
+
+</header>
+
+<!-- ========================= -->
+<!-- DASHBOARD -->
+<!-- ========================= -->
+
+<section id="dashboard" class="page active">
+
+<div class="cards">
+
+<div class="card">
+
+<div>
+
+<p>Total Barang</p>
+
+<h2 id="totalBarang">
+
+0
+
+</h2>
+
+</div>
+
+<i class="fa-solid fa-box"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<p>Penjualan Hari Ini</p>
+
+<h2 id="penjualanHari">
+
+Rp0
+
+</h2>
+
+</div>
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<p>Pengeluaran</p>
+
+<h2 id="pengeluaranHari">
+
+Rp0
+
+</h2>
+
+</div>
+
+<i class="fa-solid fa-wallet"></i>
+
+</div>
+
+<div class="card">
+
+<div>
+
+<p>Laba</p>
+
+<h2 id="labaHari">
+
+Rp0
+
+</h2>
+
+</div>
+
+<i class="fa-solid fa-chart-column"></i>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- BARANG -->
+<!-- ========================= -->
+
+<section id="barang" class="page">
+
+<div class="toolbar">
+
+<input
+type="text"
+id="cariBarang"
+placeholder="Cari barang...">
+
+<button
+class="btn-green"
+id="btnTambahBarang2">
+
+<i class="fa-solid fa-plus"></i>
+
+Tambah Barang
+
+</button>
+
+</div>
+
+<div id="listBarang" class="barang-grid">
+
+<!-- Barang otomatis -->
+
+</div>
+
+</section>
+<!-- ========================= -->
+<!-- KASIR -->
+<!-- ========================= -->
+
+<section id="kasir" class="page">
+
+<div class="kasir-container">
+
+<div class="produk-area">
+
+<div class="toolbar">
+
+<input
+type="text"
+id="cariKasir"
+placeholder="Cari barang...">
+
+</div>
+
+<div id="produkKasir" class="barang-grid">
+
+<!-- Barang Kasir -->
+
+</div>
+
+</div>
+
+<div class="cart-area">
+
+<h2>Keranjang</h2>
+
+<div id="cart">
+
+<p class="empty">
+Belum ada barang
+</p>
+
+</div>
+
+<div class="total-box">
+
+<div class="row">
+
+<span>Total</span>
+
+<b id="totalBayar">
+
+Rp0
+
+</b>
+
+</div>
+
+<input
+type="number"
+id="uangBayar"
+placeholder="Uang Pembeli">
+
+<div class="row">
+
+<span>Kembalian</span>
+
+<b id="kembalian">
+
+Rp0
+
+</b>
+
+</div>
+
+<button
+id="btnBayar"
+class="btn-green full">
+
+<i class="fa-solid fa-money-bill-wave"></i>
+
+Bayar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- PENGELUARAN -->
+<!-- ========================= -->
+
+<section id="pengeluaran" class="page">
+
+<div class="toolbar">
+
+<input
+type="text"
+id="namaPengeluaran"
+placeholder="Nama Pengeluaran">
+
+<input
+type="number"
+id="jumlahPengeluaran"
+placeholder="Nominal">
+
+<button
+id="btnTambahPengeluaran"
+class="btn-green">
+
+<i class="fa-solid fa-plus"></i>
+
+Tambah
+
+</button>
+
+</div>
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>Tanggal</th>
+
+<th>Keterangan</th>
+
+<th>Nominal</th>
+
+<th>Aksi</th>
+
+</tr>
+
+</thead>
+
+<tbody id="listPengeluaran">
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ========================= -->
+<!-- LAPORAN -->
+<!-- ========================= -->
+
+<section id="laporan" class="page">
+
+<div class="cards">
+
+<div class="card">
+
+<p>Total Penjualan</p>
+
+<h2 id="lapTotalPenjualan">
+
+Rp0
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<p>Total Pengeluaran</p>
+
+<h2 id="lapTotalPengeluaran">
+
+Rp0
+
+</h2>
+
+</div>
+
+<div class="card">
+
+<p>Laba Bersih</p>
+
+<h2 id="lapLaba">
+
+Rp0
+
+</h2>
+
+</div>
+
+</div>
+
+<br>
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>Tanggal</th>
+
+<th>Total</th>
+
+<th>Bayar</th>
+
+<th>Kembali</th>
+
+</tr>
+
+</thead>
+
+<tbody id="riwayatTransaksi">
+
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ========================= -->
+<!-- MODAL BARANG -->
+<!-- ========================= -->
+
+<div
+id="modalBarang"
+class="modal">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h2 id="modalTitle">
+
+Tambah Barang
+
+</h2>
+
+<span
+id="closeModal">
+
+&times;
+
+</span>
+
+</div>
+
+<div class="modal-body">
+
+<label>Foto Barang</label>
+
+<input
+type="file"
+id="fotoBarang"
+accept="image/*">
+
+<img
+id="previewFoto"
+src="https://placehold.co/500x300?text=Preview">
+
+<label>Nama Barang</label>
+
+<input
+type="text"
+id="namaBarang">
+
+<label>Kategori</label>
+
+<input
+type="text"
+id="kategoriBarang">
+
+<label>Harga Modal</label>
+
+<input
+type="number"
+id="modalBarangHarga">
+
+<label>Harga Jual</label>
+
+<input
+type="number"
+id="hargaBarang">
+
+<label>Stok</label>
+
+<input
+type="number"
+id="stokBarang">
+
+<button
+id="btnSimpanBarang"
+class="btn-green full">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Simpan Barang
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
