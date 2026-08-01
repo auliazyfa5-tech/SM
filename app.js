@@ -2,43 +2,86 @@
     SATU MART POS
     APP.JS PART 1
 ==========================================*/
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
+import {
+getFirestore,
+collection,
+getDocs,
+addDoc,
+updateDoc,
+deleteDoc,
+doc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAmCwuU-yvj4ThbFiJi2hed3LapWQK-dpM",
+  authDomain: "satumart-3697e.firebaseapp.com",
+  projectId: "satumart-3697e",
+  storageBucket: "satumart-3697e.firebasestorage.app",
+  messagingSenderId: "340610834874",
+  appId: "1:340610834874:web:bbe98bfaa7f47b13e77d83",
+  measurementId: "G-40VMHCZN9K"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 //=========================
 // DATABASE
 //=========================
 
-let products = JSON.parse(localStorage.getItem("products")) || [];
-
-let transaksi = JSON.parse(localStorage.getItem("transaksi")) || [];
-
-let pengeluaran = JSON.parse(localStorage.getItem("pengeluaran")) || [];
+let products = [];
+let transaksi = [];
+let pengeluaran = [];
 
 let cart = [];
 
 let editMode = false;
 let editId = null;
 let fotoBase64 = "";
+async function loadProducts(){
 
-//=========================
-// SIMPAN DATA
-//=========================
+    products=[];
 
-function saveData(){
+    const snapshot=await getDocs(collection(db,"products"));
 
-    localStorage.setItem(
-        "products",
-        JSON.stringify(products)
-    );
+    snapshot.forEach(docSnap=>{
 
-    localStorage.setItem(
-        "transaksi",
-        JSON.stringify(transaksi)
-    );
+        products.push({
 
-    localStorage.setItem(
-        "pengeluaran",
-        JSON.stringify(pengeluaran)
-    );
+            id:docSnap.id,
+
+            ...docSnap.data()
+
+        });
+
+    });
+
+    renderBarang();
+
+}
+
+async function saveProduct(data){
+
+    await addDoc(collection(db,"products"),data);
+
+    await loadProducts();
+
+}
+
+async function updateProduct(id,data){
+
+    await updateDoc(doc(db,"products",id),data);
+
+    await loadProducts();
+
+}
+
+async function deleteProduct(id){
+
+    await deleteDoc(doc(db,"products",id));
+
+    await loadProducts();
 
 }
 
@@ -316,9 +359,7 @@ function renderBarang(){
 // SIMPAN BARANG
 //=========================
 
-document
-.getElementById("btnSimpanBarang")
-.onclick=function(){
+document.getElementById("btnSimpanBarang").onclick = async function () {
 
     const nama=document.getElementById("namaBarang").value.trim();
 
@@ -349,58 +390,50 @@ document
 
     }
 
-    if(editMode){
+if(editMode){
 
-        const barang=products.find(p=>p.id===editId);
+    const barang = products.find(p => p.id === editId);
 
-        barang.nama=nama;
-        barang.kategori=kategori;
-        barang.modal=modalHarga;
-        barang.harga=harga;
-        barang.stok=stok;
+    await updateProduct(editId,{
 
-        if(fotoBase64!=""){
+        nama,
+        kategori,
+        modal: modalHarga,
+        harga,
+        stok,
 
-            barang.foto=fotoBase64;
+        foto: fotoBase64 === "" ? barang.foto : fotoBase64
 
-        }
+    });
 
-        alert("Barang berhasil diperbarui.");
+    alert("Barang berhasil diperbarui.");
+
 
     }else{
 
-        products.push({
+       await saveProduct({
 
-            id:Date.now(),
+    nama,
+    kategori,
+    modal:modalHarga,
+    harga,
+    stok,
 
-            nama:nama,
+    foto:
+    fotoBase64==""?
+    "https://placehold.co/500x300?text=Barang":
+    fotoBase64
 
-            kategori:kategori,
-
-            modal:modalHarga,
-
-            harga:harga,
-
-            stok:stok,
-
-            foto:
-            fotoBase64=="" ?
-            "https://placehold.co/500x300?text=Barang"
-            :
-            fotoBase64
-
-        });
+});
 
         alert("Barang berhasil ditambahkan.");
 
     }
 
-    saveData();
-
-    renderBarang();
+    
 
     modal.style.display="none";
-
+   
 };
 
 //=========================
@@ -448,18 +481,13 @@ function editBarang(id){
 // HAPUS BARANG
 //=========================
 
-function hapusBarang(id){
+async function hapusBarang(id){
 
     if(!confirm("Hapus barang ini?")) return;
 
-    products=products.filter(p=>p.id!==id);
-
-    saveData();
-
-    renderBarang();
+    await deleteProduct(id);
 
 }
-
 //=========================
 // SEARCH BARANG
 //=========================
@@ -992,8 +1020,19 @@ function resetSemuaData(){
 // LOAD AWAL
 //=========================
 
-renderBarang();
-renderCart();
-renderPengeluaran();
-renderLaporan();
-updateDashboard();
+//=========================
+// LOAD AWAL
+//=========================
+
+async function init(){
+
+    await loadProducts();
+
+    renderCart();
+    renderPengeluaran();
+    renderLaporan();
+    updateDashboard();
+
+}
+
+init();
