@@ -285,71 +285,59 @@ function renderBarang(){
 
     products.forEach(item=>{
 
-        const card=`
+const card = `
+<div class="barang-card">
 
-        <div class="barang-card">
+<img src="${item.foto}" alt="${item.nama}">
 
-            <img src="${item.foto}" alt="${item.nama}">
+<div class="barang-body">
 
-            <div class="barang-body">
+<h3>${item.nama}</h3>
 
-                <h3>${item.nama}</h3>
+<div class="kategori">
+${item.kategori}
+</div>
 
-                <div class="kategori">
-                    ${item.kategori}
-                </div>
+<div class="harga">
+${rupiah(item.harga)}
+</div>
 
-                <div class="harga">
-                    ${rupiah(item.harga)}
-                </div>
+<div class="stok">
+Stok : ${item.stok}
+</div>
 
-                <div class="stok">
-                    Stok : ${item.stok}
-                </div>
+<div class="action">
 
-                <div class="action">
+<button class="btn-kasir"
+onclick="tambahKeKeranjang('${item.id}')">
+<i class="fa fa-cart-plus"></i>
+</button>
 
-                    <button
-                    class="btn-kasir"
-                    onclick="tambahKeKeranjang(${item.id})">
+<button class="btn-edit"
+onclick="editBarang('${item.id}')">
+<i class="fa fa-pen"></i>
+</button>
 
-                    <i class="fa fa-cart-plus"></i>
+<button class="btn-hapus"
+onclick="hapusBarang('${item.id}')">
+<i class="fa fa-trash"></i>
+</button>
 
-                    </button>
+</div>
 
-                    <button
-                    class="btn-edit"
-                    onclick="editBarang(${item.id})">
+</div>
+</div>
+`;
 
-                    <i class="fa fa-pen"></i>
 
-                    </button>
+list.insertAdjacentHTML("beforeend", card);
 
-                    <button
-                    class="btn-hapus"
-                    onclick="hapusBarang(${item.id})">
 
-                    <i class="fa fa-trash"></i>
+if(produkKasir){
+    produkKasir.insertAdjacentHTML("beforeend", card);
+}
 
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        `;
-
-        list.innerHTML+=card;
-
-        if(produkKasir){
-
-            produkKasir.innerHTML+=card;
-
-        }
-
-    });
+});
 
     updateDashboard();
 
