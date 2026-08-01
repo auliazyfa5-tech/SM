@@ -428,7 +428,7 @@ if(editMode){
 // EDIT BARANG
 //=========================
 
-function editBarang(id){
+window.editBarang = function(id){
 
     const barang=products.find(p=>p.id===id);
 
@@ -438,28 +438,21 @@ function editBarang(id){
 
     editId=id;
 
-    document.getElementById("modalTitle").innerHTML=
-    "Edit Barang";
+    document.getElementById("modalTitle").innerHTML="Edit Barang";
 
-    document.getElementById("namaBarang").value=
-    barang.nama;
+    document.getElementById("namaBarang").value=barang.nama;
 
-    document.getElementById("kategoriBarang").value=
-    barang.kategori;
+    document.getElementById("kategoriBarang").value=barang.kategori;
 
-    document.getElementById("modalBarangHarga").value=
-    barang.modal;
+    document.getElementById("modalBarangHarga").value=barang.modal;
 
-    document.getElementById("hargaBarang").value=
-    barang.harga;
+    document.getElementById("hargaBarang").value=barang.harga;
 
-    document.getElementById("stokBarang").value=
-    barang.stok;
+    document.getElementById("stokBarang").value=barang.stok;
 
     fotoBase64=barang.foto;
 
-    document.getElementById("previewFoto").src=
-    barang.foto;
+    document.getElementById("previewFoto").src=barang.foto;
 
     modal.style.display="flex";
 
@@ -469,13 +462,14 @@ function editBarang(id){
 // HAPUS BARANG
 //=========================
 
-async function hapusBarang(id){
+window.hapusBarang = async function(id){
 
     if(!confirm("Hapus barang ini?")) return;
 
     await deleteProduct(id);
 
 }
+
 //=========================
 // SEARCH BARANG
 //=========================
@@ -517,7 +511,8 @@ renderBarang();
 // TAMBAH KE KERANJANG
 //=========================
 
-function tambahKeKeranjang(id){
+window.tambahKeKeranjang = function(id){
+
 
     const barang = products.find(p => p.id === id);
 
@@ -615,12 +610,10 @@ function renderCart(){
 
             <div class="qty">
 
-                <button onclick="kurangQty(${item.id})">-</button>
-
+                <button onclick="kurangQty('${item.id}')">
                 <b>${item.qty}</b>
 
-                <button onclick="tambahQty(${item.id})">+</button>
-
+                <button onclick="tambahQty('${item.id}')">
             </div>
 
         </div>
@@ -637,7 +630,7 @@ function renderCart(){
 // TAMBAH QTY
 //=========================
 
-function tambahQty(id){
+window.tambahQty = function(id){
 
     const item=cart.find(c=>c.id===id);
 
@@ -661,7 +654,7 @@ function tambahQty(id){
 // KURANG QTY
 //=========================
 
-function kurangQty(id){
+window.kurangQty = function(id){
 
     const item=cart.find(c=>c.id===id);
 
